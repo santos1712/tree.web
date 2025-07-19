@@ -1,0 +1,7 @@
+name = "tree-messages"
+main = "worker.js"
+compatibility_date = "2025-07-19"
+
+[[kv_namespaces]]
+binding = "MESSAGES_KV"
+id = "84487758d14d4c0eb7c4514511ca96f1"
