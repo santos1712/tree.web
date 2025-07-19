@@ -1,38 +1,18 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎁 مفاجأتي</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>إنشاء مناسبة</title>
+  <script defer src="main.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>اصنع مناسبة خاصة 🎉</h1>
-    <form id="eventForm">
-      <label>اسمك أو لقبك:</label>
-      <input type="text" id="name" placeholder="مثال: محمد" required />
-
-      <label>نوع المناسبة:</label>
-      <select id="eventType">
-        <option value="عيد ميلادي">🎂 عيد ميلادي</option>
-        <option value="عيد الفطر">🕌 عيد الفطر</option>
-        <option value="رأس السنة">🎆 رأس السنة</option>
-        <option value="مناسبة خاصة">❤️ مناسبة خاصة</option>
-      </select>
-
-      <label>تاريخ المناسبة:</label>
-      <input type="date" id="eventDate" required />
-
-      <button type="submit">أنشئ رابط المناسبة</button>
-    </form>
-
-    <div id="linkBox" style="display:none;">
-      <p>انسخ الرابط وشاركه مع أصحابك 🎈</p>
-      <input type="text" id="generatedLink" readonly />
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <h1 data-lang="title-create">🎉 إنشاء مناسبة</h1>
+  <input type="text" id="name" placeholder="اسمك" /><br>
+  <input type="text" id="occasion" placeholder="نوع المناسبة (عيد ميلاد...)" /><br>
+  <input type="date" id="date" /><br>
+  <button onclick="createEvent()" data-lang="create-btn">إنشاء</button>
+  <p id="result"></p>
+  <button onclick="toggleLang()" id="langToggle">English</button>
 </body>
 </html>

@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>📬 رسائلي</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>📬 الرسائل</title>
+  <script defer src="main.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h2 id="viewTitle">تحميل...</h2>
-
-    <div id="messageList" style="margin-top: 20px;"></div>
-
-    <div id="waitMessage" style="display:none;">
-      ⏳ لا يمكنك عرض الرسائل الآن. عد يوم المناسبة!
-    </div>
-  </div>
-
-  <script src="view.js"></script>
+  <h1 data-lang="title-view">📬 رسائل المناسبة</h1>
+  <div id="messages"></div>
+  <button onclick="toggleLang()" id="langToggle">English</button>
 </body>
 </html>
