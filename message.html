@@ -1,35 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>أرسل رسالة 🎁</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="container">
-    <h2 id="eventTitle">تحميل المناسبة...</h2>
-
-    <form id="messageForm">
-      <label for="senderName">اسمك:</label>
-      <input type="text" id="senderName" placeholder="اسمك هنا" required />
-
-      <label for="messageText">اكتب رسالتك:</label>
-      <textarea id="messageText" placeholder="كل سنة وانت طيب!" rows="4" required></textarea>
-
-      <label>
-        <input type="checkbox" id="anonymousCheck" disabled />
-        إرسال الرسالة بدون اسم (قريبًا - ميزة مدفوعة)
-      </label>
-
-      <button type="submit">إرسال الرسالة 🎈</button>
-    </form>
-
-    <div id="successMsg" style="display:none; margin-top: 20px;">
-      ✅ تم إرسال رسالتك بنجاح!
-    </div>
-  </div>
-
-  <script src="message.js"></script>
-</body>
-</html>
