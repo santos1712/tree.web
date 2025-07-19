@@ -1,4 +1,6 @@
 let hideName = false;
+let lang = localStorage.getItem("lang") || navigator.language.slice(0, 2) || "ar";
+
 const translations = {
   ar: {
     "title-create": "🎉 إنشاء مناسبة",
@@ -19,33 +21,45 @@ const translations = {
 };
 
 function toggleLang() {
-  const currentLang = document.documentElement.lang === "ar" ? "en" : "ar";
-  document.documentElement.lang = currentLang;
-  localStorage.setItem("lang", currentLang);
+  lang = (lang === "ar") ? "en" : "ar";
+  localStorage.setItem("lang", lang);
+  updateLang();
+}
+
+function updateLang() {
+  document.documentElement.lang = lang;
+  document.getElementById("langToggle").textContent = (lang === "ar") ? "English" : "عربي";
   for (let el of document.querySelectorAll("[data-lang]")) {
-    el.textContent = translations[currentLang][el.getAttribute("data-lang")];
+    el.textContent = translations[lang][el.getAttribute("data-lang")];
   }
-  document.getElementById("langToggle").textContent = currentLang === "ar" ? "English" : "عربي";
 }
 
 window.onload = () => {
-  const lang = localStorage.getItem("lang") || "ar";
-  document.documentElement.lang = lang;
-  toggleLang();
+  updateLang();
   if (window.location.pathname.includes("view")) loadMessages();
 };
 
+function showToast(msg) {
+  let toast = document.createElement("div");
+  toast.className = "toast";
+  toast.innerText = msg;
+  document.body.appendChild(toast);
+  toast.style.display = "block";
+  setTimeout(() => { toast.remove(); }, 3000);
+}
+
 async function createEvent() {
+  const name = document.getElementById("name").value;
+  const occasion = document.getElementById("occasion").value;
+  const date = document.getElementById("date").value;
   const res = await fetch("/create", {
     method: "POST",
-    body: JSON.stringify({
-      name: document.getElementById("name").value,
-      occasion: document.getElementById("occasion").value,
-      date: document.getElementById("date").value
-    })
+    body: JSON.stringify({ name, occasion, date })
   });
   const data = await res.json();
-  document.getElementById("result").innerText = window.location.origin + "/send.html?id=" + data.id;
+  const link = `${window.location.origin}/send.html?id=${data.id}`;
+  document.getElementById("generatedLink").value = link;
+  showToast("✅ تم إنشاء المناسبة");
 }
 
 function toggleHide() {
@@ -61,15 +75,14 @@ function toggleHide() {
 
 async function sendMessage() {
   const params = new URLSearchParams(window.location.search);
+  const name = document.getElementById("name").value;
+  const message = document.getElementById("message").value;
   const res = await fetch("/send?id=" + params.get("id"), {
     method: "POST",
-    body: JSON.stringify({
-      name: document.getElementById("name").value,
-      message: document.getElementById("message").value,
-      paid: hideName
-    })
+    body: JSON.stringify({ name, message, paid: hideName })
   });
   document.getElementById("status").innerText = await res.text();
+  showToast("✅ تم إرسال الرسالة");
 }
 
 async function loadMessages() {
