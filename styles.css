@@ -1,28 +1,35 @@
 body {
   font-family: 'Cairo', sans-serif;
-  background: #f3f3f3;
-  padding: 0;
+  background: linear-gradient(to bottom, #fdfbfb, #ebedee);
   margin: 0;
+  padding: 0;
   text-align: center;
   direction: rtl;
 }
 
 .container {
-  background: white;
-  max-width: 400px;
-  margin: 50px auto;
+  background: #fff;
+  max-width: 420px;
+  margin: 60px auto;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-input, select, button {
+input, textarea, button, select {
   width: 100%;
-  padding: 0.8rem;
-  margin-top: 10px;
-  border-radius: 6px;
+  padding: 0.9rem;
+  margin-top: 12px;
+  border-radius: 10px;
   border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: 'Cairo', sans-serif;
   box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
 button {
@@ -31,7 +38,7 @@ button {
   font-weight: bold;
   border: none;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.3s;
 }
 
 button:hover {
@@ -39,8 +46,28 @@ button:hover {
 }
 
 #generatedLink {
-  background: #f0f0f0;
+  background: #f3f3f3;
   border: none;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+  direction: ltr;
+}
+
+#langToggle {
+  margin-top: 15px;
+  background: #555;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #323232;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: none;
+  z-index: 999;
 }
